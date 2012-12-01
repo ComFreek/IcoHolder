@@ -18,7 +18,7 @@ if ($icoFiles.Count -eq 0) {
 
 # Generate a list of already embedded ICO files
 [string[]] $icoList = @();
-Get-Content "$scriptDir\resources.rc" | Foreach {
+Get-Content "$scriptDir\resources.rc" -ErrorAction SilentlyContinue | Foreach {
     $_ -match ".* ICON `"(.*)`"" | Out-Null;
     $icoList += ($matches[1]);
 }
